@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "name": "Rotameters",
+    "slug": "rotameters",
+    "description": "Flow measurement instruments",
+    "createdAt": "2026-04-10T16:01:20.678Z"
+  },
+  {
+    "id": "2",
+    "name": "Level Gauges",
+    "slug": "level-gauges",
+    "description": "Level measurement instruments",
+    "createdAt": "2026-04-10T16:01:20.678Z"
+  },
+  {
+    "id": "3",
+    "name": "Pipe Fittings",
+    "slug": "pipe-fittings",
+    "description": "Pipe fittings and accessories",
+    "createdAt": "2026-04-10T16:01:20.678Z"
+  },
+  {
+    "id": "4",
+    "name": "FRP Grating",
+    "slug": "frp-grating",
+    "description": "FRP grating products",
+    "createdAt": "2026-04-10T16:01:20.678Z"
+  }
+]

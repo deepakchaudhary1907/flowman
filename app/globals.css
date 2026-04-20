@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --ink:      #080e1a;
+  --ink-80:   #0d1829;
+  --ink-60:   #132035;
+  --steel:    #1a3a6e;
+  --cobalt:   #1c5fa8;
+  --gold:     #c9882a;
+  --gold-lt:  #e4a84e;
+  --gold-dim: #7a5018;
+  --slate:    #8fa3bc;
+  --mist:     #dde6f0;
+  --fog:      #f2f5f9;
+  --white:    #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  background: var(--white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Barlow Condensed', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 0.88rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: 0.7rem 1.6rem; border-radius: 3px; border: none;
+  cursor: pointer; text-decoration: none; transition: all 0.2s;
+}
+.btn-primary { background: var(--gold); color: var(--ink); }
+.btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,136,42,0.3); }
+.btn-outline { background: transparent; color: var(--mist); border: 1.5px solid rgba(221,230,240,0.35); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-steel { background: transparent; color: var(--cobalt); border: 1.5px solid var(--cobalt); }
+.btn-steel:hover { background: var(--cobalt); color: white; }
+
+/* ── Rich content ── */
+.rich-content p { margin-bottom: 0.8rem; line-height: 1.75; color: #444; font-size: 0.95rem; }
+.rich-content ul { list-style: none; padding: 0; margin-bottom: 0.8rem; }
+.rich-content ul li { padding: 0.32rem 0 0.32rem 1.4rem; position: relative; color: #444; font-size: 0.92rem; line-height: 1.6; }
+.rich-content ul li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); font-size: 0.68rem; top: 0.52rem; }
+.rich-content ol { list-style: decimal; padding-left: 1.5rem; }
+.rich-content ol li { color: #444; font-size: 0.92rem; line-height: 1.6; margin-bottom: 0.3rem; }
+.rich-content h1,
+.rich-content h2,
+.rich-content h3 { font-family: 'Barlow Condensed', sans-serif; color: var(--ink); margin: 1rem 0 0.4rem; }
+.rich-content strong { font-weight: 600; color: var(--ink); }
+
+/* ── Tiptap editor ── */
+.ProseMirror { outline: none; min-height: 200px; padding: 1rem; font-family: 'Barlow', sans-serif; line-height: 1.7; color: var(--ink); }
+.ProseMirror p { margin-bottom: 0.5rem; }
+.ProseMirror ul { list-style: disc; padding-left: 1.5rem; }
+.ProseMirror ol { list-style: decimal; padding-left: 1.5rem; }
+.ProseMirror h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; font-family: 'Barlow Condensed', sans-serif; }
+.ProseMirror h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; font-family: 'Barlow Condensed', sans-serif; }
+.ProseMirror h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; font-family: 'Barlow Condensed', sans-serif; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--fog); }
+::-webkit-scrollbar-thumb { background: var(--mist); border-radius: 3px; }
+
+/* ── Admin panel specific ──────────────────────────────────── */
+/* Applied when AdminShell renders — gives body the fog background */
+.admin-page-body {
+  background: var(--fog);
+  min-height: 100vh;
+}
+

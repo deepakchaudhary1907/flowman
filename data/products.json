@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "title": "Glass Tube Rotameter",
+    "slug": "glass-tube-rotameter",
+    "shortDescription": "Mainly used for measuring rated flow of liquid and gases.",
+    "description": "<p>Available in C.S, S.S 304, S.S 316, Polypropelene, P.T.F.E Lined.</p><ul><li>Flanged, Screwed, Hose Nipple & TC Joint connections</li><li>Available from 15 NB to 100 NB pipe size</li><li>Ranges between 30 to 30,000 LPH of Water</li><li>Accuracy of ±2% FSD</li><li>High & Low flow switches</li></ul>",
+    "image": "",
+    "categoryId": "1",
+    "createdAt": "2026-04-10T16:01:20.673Z",
+    "updatedAt": "2026-04-10T16:01:20.674Z"
+  },
+  {
+    "id": "2",
+    "title": "Metal Tube Rotameter",
+    "slug": "metal-tube-rotameter",
+    "shortDescription": "Instrument used to measure instant flow rate of Liquids and Gases.",
+    "description": "<p>Can be used for metering of translucent/opaque fluids under high operating pressure and temperature.</p><ul><li>Available is SS 304, S.S 316, P.P</li><li>Flanged size from 15 NB to 150 NB</li><li>Accuracy ±2% FSD</li><li>High and Low Flow switch on request</li></ul>",
+    "image": "",
+    "categoryId": "1",
+    "createdAt": "2026-04-10T16:01:20.674Z",
+    "updatedAt": "2026-04-10T16:01:20.674Z"
+  },
+  {
+    "id": "3",
+    "title": "Reflex / Transparent Level Gauge",
+    "slug": "reflex-transparent-level-gauge",
+    "shortDescription": "Special instruments for High Pressure & Temperature liquid storage tanks.",
+    "description": "<p>Designed for Fertilizer, Pharma & Chemical Industries.</p><ul><li>Designed upto 100 bar & temperature maximum 400°C</li><li>Available in MS/SS-304/SS-316/PP/MS with FEP/PFA Lined</li><li>Max 3 Mtrs length in single piece</li><li>Available in IBR also</li></ul>",
+    "image": "",
+    "categoryId": "2",
+    "createdAt": "2026-04-10T16:01:20.674Z",
+    "updatedAt": "2026-04-10T16:01:20.674Z"
+  },
+  {
+    "id": "4",
+    "title": "Float and Board Type Level Gauge",
+    "slug": "float-board-level-gauge",
+    "shortDescription": "Suitable for Big and Overhead Tanks of non pressurized and non-hazardous Chemical storage Tanks.",
+    "description": "<p>Installation available for Ground Level Tank, Overhead Level Tank and Underground Level Tank.</p><ul><li>Wide Range Tank Height: Guided (up to 20m), Non-Guided (up to 8m)</li><li>Specific Gravity ≥ 0.8</li><li>Application Temperature Range: Up to 100°C</li><li>Wetted Parts: SS 316</li></ul>",
+    "image": "",
+    "categoryId": "2",
+    "createdAt": "2026-04-10T16:01:20.674Z",
+    "updatedAt": "2026-04-10T16:01:20.674Z"
+  },
+  {
+    "id": "546b6927-02d6-47ca-8ae5-f0024b152434",
+    "title": "LOW FLOW ROTAMERS (ACRYLIC BODY/GLASS TUBE)",
+    "slug": "low-flow-rotamers-acrylic-body-glass-tube",
+    "description": "<ul><li><p>Available in SS 316/ SS 304/P.P/ P.T.F.E Lined </p></li><li><p> Construction. </p></li><li><p> Generally screwded with flow control valve at inlet. </p></li><li><p> 10 LPH to 150 LPH of water at ambient Temperature and 20 to 5000NLPH of Air at NTP Condition. </p></li><li><p> Accuracy ±2% FSD </p></li><li><p> Panel mounted with high and low flow switches available. </p></li><li><p>Flanged, Screwded, Hose Nipple &amp; TC Joint connection.</p></li></ul><p></p>",
+    "shortDescription": "For Low flowrate of Gas or Liquid. ",
+    "image": "/uploads/d3221414-d4ef-4fb3-ba8b-bdd6b572a94f.png",
+    "categoryId": "1",
+    "createdAt": "2026-04-10T17:38:06.379Z",
+    "updatedAt": "2026-04-10T17:38:06.381Z"
+  }
+]
