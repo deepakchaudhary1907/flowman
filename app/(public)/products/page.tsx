@@ -1,4 +1,5 @@
 // app/(public)/products/page.tsx
+// THEME: Electric Blue (#4BB6E8) + Charcoal (#1e2229) — matches Flowman Engineers logo
 
 'use client';
 import { useState, useEffect } from 'react';
@@ -10,12 +11,12 @@ interface Category { id: string; name: string; slug: string; description: string
 interface Product { id: string; title: string; slug: string; shortDescription: string; image: string; categoryId: string; }
 
 const CAT_COLORS = [
-  'linear-gradient(135deg, #1c5fa8 0%, #0d3a6e 100%)',
-  'linear-gradient(135deg, #c9882a 0%, #7a5018 100%)',
-  'linear-gradient(135deg, #1a6b5a 0%, #0e3d34 100%)',
-  'linear-gradient(135deg, #5a2d8c 0%, #32186e 100%)',
-  'linear-gradient(135deg, #7a3a18 0%, #c9882a 100%)',
-  'linear-gradient(135deg, #1c5fa8 0%, #1a6b5a 100%)',
+  'linear-gradient(135deg, #1e2229 0%, #2a9fd6 100%)',
+  'linear-gradient(135deg, #1e2229 0%, #1e8fc0 100%)',
+  'linear-gradient(135deg, #2d3440 0%, #4bb6e8 100%)',
+  'linear-gradient(135deg, #1a2535 0%, #2a9fd6 100%)',
+  'linear-gradient(135deg, #1e2229 0%, #3aa8d4 100%)',
+  'linear-gradient(135deg, #252c35 0%, #1e8fc0 100%)',
 ];
 
 const W = { maxWidth: 1200, margin: '0 auto', padding: '0 24px' };
@@ -66,25 +67,48 @@ function ProductsContent() {
   return (
     <div>
       <style>{`
+        :root {
+          --brand:      #4bb6e8;
+          --brand-dk:   #2a9fd6;
+          --brand-lt:   #7ecef0;
+          --brand-pale: rgba(75,182,232,0.10);
+          --cobalt:     #1e8fc0;
+          --ink:        #1e2229;
+          --steel:      #2d3440;
+          --fog:        #f4f6f8;
+          --mist:       #dde2e8;
+          --slate:      #8a9baa;
+        }
+
+        /* Category cards */
         .cat-card { position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s; border-radius: 12px; }
-        .cat-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 28px 60px rgba(8,14,26,0.35); }
+        .cat-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 28px 60px rgba(30,34,41,0.35); }
         .cat-card:hover .cat-overlay { opacity: 1; }
         .cat-card:hover .cat-arrow { transform: translateX(4px); opacity: 1; }
-        .cat-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.15); opacity: 0; transition: opacity 0.3s; }
-        .cat-arrow { opacity: 0.5; transition: transform 0.3s, opacity 0.3s; display: inline-block; }
+        .cat-overlay { position: absolute; inset: 0; background: rgba(75,182,232,0.08); opacity: 0; transition: opacity 0.3s; }
+        .cat-arrow { opacity: 0.55; transition: transform 0.3s, opacity 0.3s; display: inline-block; }
         .cat-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
         .cat-card:hover .cat-img { transform: scale(1.06); }
+
+        /* Product cards */
         .prod-card { transition: all 0.25s; }
-        .prod-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(8,14,26,0.13); border-color: rgba(201,136,42,0.35) !important; }
-        .prod-card:hover .prod-cta { color: var(--gold) !important; }
-        .prod-img-wrap { height: 200px; width: 100%; overflow: hidden; position: relative; flex-shrink: 0; background: linear-gradient(145deg, var(--ink-80), var(--steel)); }
+        .prod-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(30,34,41,0.13); border-color: rgba(75,182,232,0.40) !important; }
+        .prod-card:hover .prod-cta { color: var(--brand) !important; }
+        .prod-img-wrap { height: 200px; width: 100%; overflow: hidden; position: relative; flex-shrink: 0; background: linear-gradient(145deg, var(--ink), var(--steel)); }
         .prod-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
         .prod-img-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: rgba(255,255,255,0.2); }
-        .prod-img-texture { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 1; }
+        .prod-img-texture { position: absolute; inset: 0; background-image: linear-gradient(rgba(75,182,232,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(75,182,232,0.04) 1px,transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 1; }
         .prod-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.8rem; color: #6b7280; line-height: 1.6; flex: 1; margin-bottom: 0.9rem; }
         .prod-body { padding: 1.1rem 1.15rem; display: flex; flex-direction: column; min-height: 130px; }
         .prod-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .prod-cta { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.73rem; letter-spacing: 1px; text-transform: uppercase; color: var(--cobalt); transition: color 0.2s; margin-top: auto; }
+
+        /* Buttons */
+        .btn { display: inline-block; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.875rem; letter-spacing: 1px; text-transform: uppercase; padding: 0.72rem 1.55rem; border-radius: 3px; transition: all 0.22s; cursor: pointer; line-height: 1; border: none; }
+        .btn-primary { background: var(--brand); color: #0d1a24; border: 2px solid var(--brand); }
+        .btn-primary:hover { background: var(--brand-dk); border-color: var(--brand-dk); color: white; }
+
+        /* Responsive */
         @media (max-width: 900px) {
           .cat-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .prod-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -95,10 +119,10 @@ function ProductsContent() {
         }
       `}</style>
 
-      {/* Page Header */}
+      {/* ── PAGE HEADER ── */}
       <div style={{ background: 'var(--ink)', padding: '52px 0 36px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(28,95,168,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(75,182,232,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(75,182,232,0.04) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(75,182,232,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={W}>
           <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.66rem', color: 'var(--slate)', marginBottom: '0.55rem', letterSpacing: '0.5px', position: 'relative' }}>
             <Link href="/" style={{ color: 'var(--slate)', textDecoration: 'none' }}>Home</Link>
@@ -107,10 +131,10 @@ function ProductsContent() {
               <>
                 <button onClick={clearCategory} style={{ background: 'none', border: 'none', color: 'var(--slate)', cursor: 'pointer', fontFamily: 'DM Mono, monospace', fontSize: '0.66rem', padding: 0 }}>Products</button>
                 <span style={{ margin: '0 0.4rem', opacity: 0.35 }}>›</span>
-                <span style={{ color: 'var(--gold)' }}>{activeCatObj.name}</span>
+                <span style={{ color: 'var(--brand)' }}>{activeCatObj.name}</span>
               </>
             ) : (
-              <span style={{ color: 'var(--gold)' }}>Products</span>
+              <span style={{ color: 'var(--brand)' }}>Products</span>
             )}
           </div>
           <h1 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: 'clamp(1.9rem, 4.5vw, 3rem)', color: 'white', letterSpacing: '-0.02em', marginBottom: '0.4rem', position: 'relative' }}>
@@ -124,7 +148,7 @@ function ProductsContent() {
         </div>
       </div>
 
-      {/* ── CATEGORIES VIEW (shown when no category selected) ── */}
+      {/* ── CATEGORIES VIEW ── */}
       {!activeCategory && (
         <div style={{ background: 'var(--fog)', paddingTop: '3rem', paddingBottom: '4rem' }}>
           <div style={W}>
@@ -142,27 +166,27 @@ function ProductsContent() {
                     onClick={() => selectCategory(cat.slug)}
                     style={{ height: 280, background: fallbackBg }}
                   >
-                    {/* Image if exists */}
                     {cat.image && (
                       <img src={cat.image} alt={cat.name} className="cat-img" style={{ position: 'absolute', inset: 0 }} />
                     )}
-                    {/* Dark gradient overlay for text legibility */}
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(8,14,26,0.85) 0%, rgba(8,14,26,0.25) 55%, rgba(8,14,26,0.1) 100%)' }} />
+                    {/* gradient overlay */}
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(30,34,41,0.88) 0%, rgba(30,34,41,0.25) 55%, rgba(30,34,41,0.08) 100%)' }} />
+                    {/* Blue bottom border accent */}
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, background: 'var(--brand)', opacity: 0.7 }} />
                     <div className="cat-overlay" />
-                    {/* Content */}
                     <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem 1.6rem' }}>
-                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '0.4rem' }}>
+                      <div style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.58rem', letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(75,182,232,0.65)', marginBottom: '0.4rem' }}>
                         {catProductCount} Product{catProductCount !== 1 ? 's' : ''}
                       </div>
                       <h2 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', color: 'white', margin: 0, lineHeight: 1.1, letterSpacing: '-0.01em' }}>
                         {cat.name}
                       </h2>
                       {cat.description && (
-                        <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.8rem', color: 'rgba(255,255,255,0.65)', marginTop: '0.4rem', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', marginTop: '0.4rem', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                           {cat.description}
                         </p>
                       )}
-                      <div style={{ marginTop: '0.85rem', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--gold)' }}>
+                      <div style={{ marginTop: '0.85rem', fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--brand)' }}>
                         View Products <span className="cat-arrow">→</span>
                       </div>
                     </div>
@@ -179,11 +203,11 @@ function ProductsContent() {
         </div>
       )}
 
-      {/* ── PRODUCTS VIEW (shown when a category is selected) ── */}
+      {/* ── PRODUCTS VIEW ── */}
       {activeCategory && (
         <div id="products-section" style={{ background: 'var(--fog)' }}>
           {/* Filter bar */}
-          <div style={{ background: 'white', borderBottom: '1px solid var(--mist)', padding: '0.85rem 0', position: 'sticky', top: 60, zIndex: 50, boxShadow: '0 2px 8px rgba(8,14,26,0.06)' }}>
+          <div style={{ background: 'white', borderBottom: '1px solid var(--mist)', padding: '0.85rem 0', position: 'sticky', top: 60, zIndex: 50, boxShadow: '0 2px 8px rgba(30,34,41,0.06)' }}>
             <div style={{ ...W, display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
               <button
                 onClick={clearCategory}
@@ -199,7 +223,7 @@ function ProductsContent() {
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                   style={{ width: '100%', paddingLeft: '2.1rem', paddingRight: '0.9rem', paddingTop: '0.52rem', paddingBottom: '0.52rem', border: '1.5px solid var(--mist)', borderRadius: 6, fontSize: '0.85rem', fontFamily: 'Barlow, sans-serif', outline: 'none', background: 'white', transition: 'border-color 0.2s' }}
-                  onFocus={e => (e.target.style.borderColor = 'var(--cobalt)')}
+                  onFocus={e => (e.target.style.borderColor = 'var(--brand)')}
                   onBlur={e => (e.target.style.borderColor = 'var(--mist)')}
                 />
               </div>
@@ -215,7 +239,7 @@ function ProductsContent() {
               <div style={{ textAlign: 'center', padding: '5rem 0', color: 'var(--slate)' }}>
                 <div style={{ fontSize: '2.5rem', opacity: 0.22, marginBottom: '0.75rem' }}>◈</div>
                 <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: '1.1rem' }}>No products match your search.</p>
-                <button onClick={() => setSearch('')} style={{ marginTop: '1rem', padding: '0.5rem 1.2rem', background: 'var(--cobalt)', color: 'white', border: 'none', borderRadius: 6, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer' }}>
+                <button onClick={() => setSearch('')} style={{ marginTop: '1rem', padding: '0.5rem 1.2rem', background: 'var(--brand)', color: '#0d1a24', border: 'none', borderRadius: 6, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.9rem', cursor: 'pointer' }}>
                   Clear Search
                 </button>
               </div>
@@ -225,12 +249,12 @@ function ProductsContent() {
                   const cat = categories.find(c => c.id === product.categoryId);
                   return (
                     <Link key={product.id} href={`/products/${product.id}`} style={{ textDecoration: 'none' }}>
-                      <div className="prod-card" style={{ background: 'white', border: '1px solid var(--mist)', borderRadius: 10, overflow: 'hidden', boxShadow: '0 1px 6px rgba(8,14,26,0.05)', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                      <div className="prod-card" style={{ background: 'white', border: '1px solid var(--mist)', borderRadius: 10, overflow: 'hidden', boxShadow: '0 1px 6px rgba(30,34,41,0.05)', display: 'flex', flexDirection: 'column', height: '100%' }}>
                         <div className="prod-img-wrap">
                           <div className="prod-img-texture" />
                           {product.image ? <img src={product.image} alt={product.title} /> : <div className="prod-img-placeholder">⚙</div>}
                           {cat && (
-                            <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(201,136,42,0.16)', color: 'var(--gold)', border: '1px solid rgba(201,136,42,0.32)', padding: '2px 8px', borderRadius: 2, fontSize: '0.6rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', fontFamily: 'DM Mono, monospace', zIndex: 2 }}>{cat.name}</div>
+                            <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(75,182,232,0.15)', color: 'var(--brand)', border: '1px solid rgba(75,182,232,0.3)', padding: '2px 8px', borderRadius: 2, fontSize: '0.6rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', fontFamily: 'DM Mono, monospace', zIndex: 2 }}>{cat.name}</div>
                           )}
                         </div>
                         <div className="prod-body">
@@ -253,7 +277,7 @@ function ProductsContent() {
 
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '0.75rem', color: 'var(--slate)', letterSpacing: '2px' }}>LOADING…</div>}>
+    <Suspense fallback={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'DM Mono, monospace', fontSize: '0.75rem', color: '#8a9baa', letterSpacing: '2px' }}>LOADING…</div>}>
       <ProductsContent />
     </Suspense>
   );
